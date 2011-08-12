@@ -692,6 +692,25 @@ exports.createdTime = function (options) {
     }));
 };
 
+/**
+ * Creates a datetime Field, stores the value as a numeric timestamp
+ * uses a datepicker widget as its default
+ *
+ * Required option: 
+ *
+ * @name datetime([options])
+ * @param {Object} options
+ * @api public
+ */
+exports.datetime = function (options) {
+    options = options || {};
+    return exports.number(_.defaults(options, {
+        widget: widgets.datetime2a(),
+        default_value: function (req) {
+            return new Date().getTime();
+        }
+    }));
+}
 
 /**
  * Creates a choice Field
